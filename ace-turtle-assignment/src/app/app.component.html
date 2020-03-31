@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row  text-left mt-4">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Input
+          </h4>
+        </div>
+        <div class="row px-3 mt-4">
+          <div class="col-md-12 mb-3 ">
+            <label for="XCord">X Coordinate</label>
+            <input type="number" #Xcord name="Xcord"  [(ngModel)]="dragPosition.x" (input)='getPos()' >
+          </div>
+          <br>
+          <div class="col-md-12 mb-3">
+            <label for="YCord">Y Coordinate</label>
+            <input type="number" #Ycord name="Ycord" [(ngModel)]="dragPosition.y">
+          </div>
+          <br>
+          <div class="col-md-12 mb-3">
+            <label for="width">Width</label>
+            <input type="number" name="width" [(ngModel)]="width">
+          </div>
+          <br>
+          <div class="col-md-12 mb-3">
+            <label for="height">Height</label>
+            <input type="number"  name="height"[(ngModel)]="height">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header">
+          <h4>
+            Preview
+          </h4>
+        </div>
+        <div class="container text-center">
+          <div class="row px-3 mt-5 ">
+            <div class="col-md-12 container">
+              <div  class="outer-box">
+                <div #innerbox [style.width.px]="width" [style.height.px]="height"  class="inner-box" [style.transform] = "updatePos"
+                cdkDrag
+                [cdkDragFreeDragPosition]="dragPosition"
+                cdkDragBoundary=".outer-box"
+
+                (cdkDragEnded)="dragEnd($event)">
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
